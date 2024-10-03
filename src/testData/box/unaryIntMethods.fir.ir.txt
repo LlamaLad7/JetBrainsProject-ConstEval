@@ -1,0 +1,75 @@
+FILE fqName:<root> fileName:/unaryIntMethods.kt
+  FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
+    BLOCK_BODY
+      VAR name:result type:kotlin.String [val]
+        CONST String type=kotlin.String value="294854\n294855\n294855\n294854\n294854\n-294854\n-294855\n294854\n294854\n294854"
+      VAR name:expected type:kotlin.String [val]
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: CONST String type=kotlin.String value="\n        294854\n        294855\n        294855\n        294854\n        294854\n        -294854\n        -294855\n        294854\n        294854\n        294854\n    "
+      RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+        WHEN type=kotlin.String origin=IF
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+              arg1: GET_VAR 'val expected: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+            then: CONST String type=kotlin.String value="OK"
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: STRING_CONCATENATION type=kotlin.String
+              CONST String type=kotlin.String value="Fail: "
+              GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+  FUN name:evalUnaryIntMethods visibility:public modality:FINAL <> (xIn:kotlin.Int) returnType:kotlin.String
+    VALUE_PARAMETER name:xIn index:0 type:kotlin.Int
+    BLOCK_BODY
+      VAR name:x type:kotlin.Int [var]
+        GET_VAR 'xIn: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+      RETURN type=kotlin.Nothing from='public final fun evalUnaryIntMethods (xIn: kotlin.Int): kotlin.String declared in <root>'
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: STRING_CONCATENATION type=kotlin.String
+            CONST String type=kotlin.String value="\n        "
+            BLOCK type=kotlin.Int origin=POSTFIX_INCR
+              VAR IR_TEMPORARY_VARIABLE name:tmp_0 type:kotlin.Int [val]
+                GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=POSTFIX_INCR
+              SET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Unit origin=POSTFIX_INCR
+                CALL 'public final fun inc (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=POSTFIX_INCR
+                  $this: GET_VAR 'val tmp_0: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+              GET_VAR 'val tmp_0: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            BLOCK type=kotlin.Int origin=POSTFIX_DECR
+              VAR IR_TEMPORARY_VARIABLE name:tmp_1 type:kotlin.Int [val]
+                GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=POSTFIX_DECR
+              SET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Unit origin=POSTFIX_DECR
+                CALL 'public final fun dec (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=POSTFIX_DECR
+                  $this: GET_VAR 'val tmp_1: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+              GET_VAR 'val tmp_1: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            BLOCK type=kotlin.Int origin=PREFIX_INCR
+              SET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Unit origin=PREFIX_INCR
+                CALL 'public final fun inc (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=PREFIX_INCR
+                  $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=PREFIX_INCR
+              GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=PREFIX_INCR
+            CONST String type=kotlin.String value="\n        "
+            BLOCK type=kotlin.Int origin=PREFIX_DECR
+              SET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Unit origin=PREFIX_DECR
+                CALL 'public final fun dec (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=PREFIX_DECR
+                  $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=PREFIX_DECR
+              GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=PREFIX_DECR
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun unaryPlus (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun unaryMinus (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun inv (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun toInt (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun toString (): kotlin.String declared in kotlin.Int' type=kotlin.String origin=null
+              $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun hashCode (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'var x: kotlin.Int declared in <root>.evalUnaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n    "

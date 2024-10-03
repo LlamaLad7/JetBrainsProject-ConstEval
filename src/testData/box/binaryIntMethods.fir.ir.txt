@@ -1,0 +1,98 @@
+FILE fqName:<root> fileName:/binaryIntMethods.kt
+  FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
+    BLOCK_BODY
+      VAR name:result type:kotlin.String [val]
+        CONST String type=kotlin.String value="false\nfalse\ntrue\ntrue\nfalse\ntrue\n10246\n10232\n71673\n1462\n5\n1310592\n79\n33554352\n7\n10239\n10232"
+      VAR name:expected type:kotlin.String [val]
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: CONST String type=kotlin.String value="\n        false\n        false\n        true\n        true\n        false\n        true\n        10246\n        10232\n        71673\n        1462\n        5\n        1310592\n        79\n        33554352\n        7\n        10239\n        10232\n    "
+      RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+        WHEN type=kotlin.String origin=IF
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+              arg1: GET_VAR 'val expected: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+            then: CONST String type=kotlin.String value="OK"
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: STRING_CONCATENATION type=kotlin.String
+              CONST String type=kotlin.String value="Fail: "
+              GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+  FUN name:evalBinaryIntMethods visibility:public modality:FINAL <> (a:kotlin.Int, b:kotlin.Int) returnType:kotlin.String
+    VALUE_PARAMETER name:a index:0 type:kotlin.Int
+    VALUE_PARAMETER name:b index:1 type:kotlin.Int
+    BLOCK_BODY
+      RETURN type=kotlin.Nothing from='public final fun evalBinaryIntMethods (a: kotlin.Int, b: kotlin.Int): kotlin.String declared in <root>'
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: STRING_CONCATENATION type=kotlin.String
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun less (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=LT
+              arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              arg1: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun lessOrEqual (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=LTEQ
+              arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              arg1: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun greater (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=GT
+              arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              arg1: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun greaterOrEqual (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=GTEQ
+              arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              arg1: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              arg1: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun not (): kotlin.Boolean declared in kotlin.Boolean' type=kotlin.Boolean origin=EXCLEQ
+              $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EXCLEQ
+                arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+                arg1: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun plus (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=PLUS
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun minus (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=MINUS
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun times (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=MUL
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun div (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=DIV
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun rem (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=PERC
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun shl (bitCount: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              bitCount: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun shr (bitCount: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              bitCount: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun ushr (bitCount: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: CALL 'public final fun unaryMinus (): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+                $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              bitCount: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun and (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun or (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun xor (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n    "
