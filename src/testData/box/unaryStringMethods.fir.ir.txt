@@ -1,0 +1,39 @@
+FILE fqName:<root> fileName:/unaryStringMethods.kt
+  FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
+    BLOCK_BODY
+      VAR name:result type:kotlin.String [val]
+        CONST String type=kotlin.String value="8\nhello\n-714002254\n   hello"
+      VAR name:expected type:kotlin.String [val]
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: CONST String type=kotlin.String value="\n        8\n        hello\n        -714002254\n           hello\n    "
+      RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+        WHEN type=kotlin.String origin=IF
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+              arg1: GET_VAR 'val expected: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+            then: CONST String type=kotlin.String value="OK"
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: STRING_CONCATENATION type=kotlin.String
+              CONST String type=kotlin.String value="Fail: "
+              GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+  FUN name:evalUnaryStringMethods visibility:public modality:FINAL <> (s:kotlin.String) returnType:kotlin.String
+    VALUE_PARAMETER name:s index:0 type:kotlin.String
+    BLOCK_BODY
+      RETURN type=kotlin.Nothing from='public final fun evalUnaryStringMethods (s: kotlin.String): kotlin.String declared in <root>'
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: STRING_CONCATENATION type=kotlin.String
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun <get-length> (): kotlin.Int declared in kotlin.String' type=kotlin.Int origin=GET_PROPERTY
+              $this: GET_VAR 's: kotlin.String declared in <root>.evalUnaryStringMethods' type=kotlin.String origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+              $receiver: GET_VAR 's: kotlin.String declared in <root>.evalUnaryStringMethods' type=kotlin.String origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun hashCode (): kotlin.Int declared in kotlin.String' type=kotlin.Int origin=null
+              $this: GET_VAR 's: kotlin.String declared in <root>.evalUnaryStringMethods' type=kotlin.String origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun toString (): kotlin.String declared in kotlin.String' type=kotlin.String origin=null
+              $this: GET_VAR 's: kotlin.String declared in <root>.evalUnaryStringMethods' type=kotlin.String origin=null
+            CONST String type=kotlin.String value="\n    "

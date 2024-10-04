@@ -2,10 +2,10 @@ FILE fqName:<root> fileName:/binaryIntMethods.kt
   FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
     BLOCK_BODY
       VAR name:result type:kotlin.String [val]
-        CONST String type=kotlin.String value="false\nfalse\ntrue\ntrue\nfalse\ntrue\n10246\n10232\n71673\n1462\n5\n1310592\n79\n33554352\n7\n10239\n10232"
+        CONST String type=kotlin.String value="1\nfalse\nfalse\ntrue\ntrue\nfalse\ntrue\n10246\n10232\n71673\n1462\n5\n1310592\n79\n33554352\n7\n10239\n10232\nfalse"
       VAR name:expected type:kotlin.String [val]
         CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
-          $receiver: CONST String type=kotlin.String value="\n        false\n        false\n        true\n        true\n        false\n        true\n        10246\n        10232\n        71673\n        1462\n        5\n        1310592\n        79\n        33554352\n        7\n        10239\n        10232\n    "
+          $receiver: CONST String type=kotlin.String value="\n        1\n        false\n        false\n        true\n        true\n        false\n        true\n        10246\n        10232\n        71673\n        1462\n        5\n        1310592\n        79\n        33554352\n        7\n        10239\n        10232\n        false\n    "
       RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
         WHEN type=kotlin.String origin=IF
           BRANCH
@@ -25,6 +25,10 @@ FILE fqName:<root> fileName:/binaryIntMethods.kt
       RETURN type=kotlin.Nothing from='public final fun evalBinaryIntMethods (a: kotlin.Int, b: kotlin.Int): kotlin.String declared in <root>'
         CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
           $receiver: STRING_CONCATENATION type=kotlin.String
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun compareTo (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
             CONST String type=kotlin.String value="\n        "
             CALL 'public final fun less (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=LT
               arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
@@ -93,6 +97,10 @@ FILE fqName:<root> fileName:/binaryIntMethods.kt
               other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
             CONST String type=kotlin.String value="\n        "
             CALL 'public final fun xor (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+              other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun equals (other: kotlin.Any?): kotlin.Boolean declared in kotlin.Int' type=kotlin.Boolean origin=null
               $this: GET_VAR 'a: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
               other: GET_VAR 'b: kotlin.Int declared in <root>.evalBinaryIntMethods' type=kotlin.Int origin=null
             CONST String type=kotlin.String value="\n    "

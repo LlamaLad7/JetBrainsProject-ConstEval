@@ -1,0 +1,97 @@
+FILE fqName:<root> fileName:/binaryBooleanMethods.kt
+  FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
+    BLOCK_BODY
+      VAR name:result type:kotlin.String [val]
+        CONST String type=kotlin.String value="-1\ntrue\ntrue\nfalse\nfalse\nfalse\ntrue\nfalse\ntrue\ntrue\nfalse\ntrue\nfalse"
+      VAR name:expected type:kotlin.String [val]
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: CONST String type=kotlin.String value="\n        -1\n        true\n        true\n        false\n        false\n        false\n        true\n        false\n        true\n        true\n        false\n        true\n        false\n    "
+      RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+        WHEN type=kotlin.String origin=IF
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+              arg1: GET_VAR 'val expected: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+            then: CONST String type=kotlin.String value="OK"
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: STRING_CONCATENATION type=kotlin.String
+              CONST String type=kotlin.String value="Fail: "
+              GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+  FUN name:evalBinaryBooleanMethods visibility:public modality:FINAL <> (a:kotlin.Boolean, b:kotlin.Boolean) returnType:kotlin.String
+    VALUE_PARAMETER name:a index:0 type:kotlin.Boolean
+    VALUE_PARAMETER name:b index:1 type:kotlin.Boolean
+    BLOCK_BODY
+      RETURN type=kotlin.Nothing from='public final fun evalBinaryBooleanMethods (a: kotlin.Boolean, b: kotlin.Boolean): kotlin.String declared in <root>'
+        CALL 'public final fun trimIndent (): kotlin.String declared in kotlin.text' type=kotlin.String origin=null
+          $receiver: STRING_CONCATENATION type=kotlin.String
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun compareTo (other: kotlin.Boolean): kotlin.Int declared in kotlin.Boolean' type=kotlin.Int origin=null
+              $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun less (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=LT
+              arg0: CALL 'public open fun compareTo (other: kotlin.Boolean): kotlin.Int declared in kotlin.Boolean' type=kotlin.Int origin=LT
+                $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+                other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              arg1: CONST Int type=kotlin.Int value=0
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun lessOrEqual (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=LTEQ
+              arg0: CALL 'public open fun compareTo (other: kotlin.Boolean): kotlin.Int declared in kotlin.Boolean' type=kotlin.Int origin=LTEQ
+                $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+                other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              arg1: CONST Int type=kotlin.Int value=0
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun greater (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=GT
+              arg0: CALL 'public open fun compareTo (other: kotlin.Boolean): kotlin.Int declared in kotlin.Boolean' type=kotlin.Int origin=GT
+                $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+                other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              arg1: CONST Int type=kotlin.Int value=0
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun greaterOrEqual (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=GTEQ
+              arg0: CALL 'public open fun compareTo (other: kotlin.Boolean): kotlin.Int declared in kotlin.Boolean' type=kotlin.Int origin=GTEQ
+                $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+                other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              arg1: CONST Int type=kotlin.Int value=0
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              arg1: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun not (): kotlin.Boolean declared in kotlin.Boolean' type=kotlin.Boolean origin=EXCLEQ
+              $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EXCLEQ
+                arg0: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+                arg1: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun and (other: kotlin.Boolean): kotlin.Boolean declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+              $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun or (other: kotlin.Boolean): kotlin.Boolean declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+              $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public final fun xor (other: kotlin.Boolean): kotlin.Boolean declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+              $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n        "
+            WHEN type=kotlin.Boolean origin=ANDAND
+              BRANCH
+                if: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+                then: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              BRANCH
+                if: CONST Boolean type=kotlin.Boolean value=true
+                then: CONST Boolean type=kotlin.Boolean value=false
+            CONST String type=kotlin.String value="\n        "
+            WHEN type=kotlin.Boolean origin=OROR
+              BRANCH
+                if: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+                then: CONST Boolean type=kotlin.Boolean value=true
+              BRANCH
+                if: CONST Boolean type=kotlin.Boolean value=true
+                then: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n        "
+            CALL 'public open fun equals (other: kotlin.Any?): kotlin.Boolean declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+              $this: GET_VAR 'a: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+              other: GET_VAR 'b: kotlin.Boolean declared in <root>.evalBinaryBooleanMethods' type=kotlin.Boolean origin=null
+            CONST String type=kotlin.String value="\n    "
