@@ -18,6 +18,12 @@ sealed class EvalResult {
         override fun getIrType(context: IrPluginContext) = context.irBuiltIns.stringType
     }
 
+    data object Unit : EvalResult() {
+        override val value get() = kotlin.Unit
+
+        override fun getIrType(context: IrPluginContext) = context.irBuiltIns.unitType
+    }
+
     abstract val value: Any
 
     abstract fun getIrType(context: IrPluginContext): IrType

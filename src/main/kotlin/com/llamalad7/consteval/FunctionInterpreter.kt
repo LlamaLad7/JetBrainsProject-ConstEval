@@ -25,33 +25,33 @@ import org.jetbrains.kotlin.ir.visitors.IrElementVisitor
 
 class FunctionInterpreter(
     private val myFunction: IrFunction?,
-) : IrElementVisitor<EvalResult?, EvalData> {
-    override fun visitElement(element: IrElement, data: EvalData): EvalResult? {
+) : IrElementVisitor<EvalResult, EvalData> {
+    override fun visitElement(element: IrElement, data: EvalData): EvalResult {
         cannotEval(element)
     }
 
-    override fun visitVariable(declaration: IrVariable, data: EvalData): EvalResult? {
+    override fun visitVariable(declaration: IrVariable, data: EvalData): EvalResult {
         data.declare(declaration.symbol, declaration.initializer?.accept(this, data))
-        return null
+        return EvalResult.Unit
     }
 
-    override fun visitBody(body: IrBody, data: EvalData): EvalResult? {
+    override fun visitBody(body: IrBody, data: EvalData): EvalResult {
         return body.statements.evaluateAll(EvalData(parent = data))
     }
 
-    override fun visitContainerExpression(expression: IrContainerExpression, data: EvalData): EvalResult? {
+    override fun visitContainerExpression(expression: IrContainerExpression, data: EvalData): EvalResult {
         return expression.statements.evaluateAll(EvalData(parent = data))
     }
 
-    override fun visitBreak(jump: IrBreak, data: EvalData): EvalResult? {
+    override fun visitBreak(jump: IrBreak, data: EvalData): EvalResult {
         throw Signal.Break(jump.loop)
     }
 
-    override fun visitContinue(jump: IrContinue, data: EvalData): EvalResult? {
+    override fun visitContinue(jump: IrContinue, data: EvalData): EvalResult {
         throw Signal.Continue(jump.loop)
     }
 
-    override fun visitCall(expression: IrCall, data: EvalData): EvalResult? {
+    override fun visitCall(expression: IrCall, data: EvalData): EvalResult {
         val function = expression.symbol.owner
         if (function.isEvalFunction()) {
             return evaluate(
@@ -63,12 +63,12 @@ class FunctionInterpreter(
         return evaluateCall(
             function,
             expression.receiverAndArgs().map {
-                it.accept(this, data) ?: cannotEval(expression)
+                it.accept(this, data)
             }
         ) ?: cannotEval(expression)
     }
 
-    override fun visitConst(expression: IrConst<*>, data: EvalData): EvalResult? {
+    override fun visitConst(expression: IrConst<*>, data: EvalData): EvalResult {
         return when (expression.kind) {
             IrConstKind.Int -> EvalResult.IntConst(expression.value as Int)
             IrConstKind.Boolean -> EvalResult.BooleanConst(expression.value as Boolean)
@@ -77,7 +77,7 @@ class FunctionInterpreter(
         }
     }
 
-    override fun visitWhileLoop(loop: IrWhileLoop, data: EvalData): EvalResult? {
+    override fun visitWhileLoop(loop: IrWhileLoop, data: EvalData): EvalResult {
         while (loop.condition.accept(this, data).valueAs()) {
             try {
                 loop.body?.accept(this, data)
@@ -93,53 +93,53 @@ class FunctionInterpreter(
                 throw cnt
             }
         }
-        return null
+        return EvalResult.Unit
     }
 
-    override fun visitReturn(expression: IrReturn, data: EvalData): EvalResult? {
+    override fun visitReturn(expression: IrReturn, data: EvalData): EvalResult {
         if (expression.returnTargetSymbol.owner == myFunction) {
-            throw Signal.Return(expression.value.accept(this, data) ?: cannotEval(expression))
+            throw Signal.Return(expression.value.accept(this, data))
         }
         cannotEval(expression)
     }
 
-    override fun visitStringConcatenation(expression: IrStringConcatenation, data: EvalData): EvalResult? {
+    override fun visitStringConcatenation(expression: IrStringConcatenation, data: EvalData): EvalResult {
         return EvalResult.of(
             expression.arguments.joinToString("") {
-                it.accept(this, data)?.value?.toString() ?: cannotEval(expression)
+                it.accept(this, data).value.toString()
             }
         )
     }
 
-    override fun visitTypeOperator(expression: IrTypeOperatorCall, data: EvalData): EvalResult? {
+    override fun visitTypeOperator(expression: IrTypeOperatorCall, data: EvalData): EvalResult {
         if (expression.operator != IrTypeOperator.IMPLICIT_COERCION_TO_UNIT) {
             cannotEval(expression)
         }
         expression.argument.accept(this, data)
-        return null
+        return EvalResult.Unit
     }
 
-    override fun visitGetValue(expression: IrGetValue, data: EvalData): EvalResult? {
+    override fun visitGetValue(expression: IrGetValue, data: EvalData): EvalResult {
         return data.get(expression.symbol) ?: cannotEval(expression)
     }
 
-    override fun visitSetValue(expression: IrSetValue, data: EvalData): EvalResult? {
-        data.set(expression.symbol, expression.value.accept(this, data) ?: cannotEval(expression))
-        return null
+    override fun visitSetValue(expression: IrSetValue, data: EvalData): EvalResult {
+        data.set(expression.symbol, expression.value.accept(this, data))
+        return EvalResult.Unit
     }
 
-    override fun visitWhen(expression: IrWhen, data: EvalData): EvalResult? {
+    override fun visitWhen(expression: IrWhen, data: EvalData): EvalResult {
         for (branch in expression.branches) {
             val matches = branch.condition.accept(this, data).valueAs<Boolean>()
             if (matches) {
                 return branch.result.accept(this, data)
             }
         }
-        return null
+        return EvalResult.Unit
     }
 
     private fun List<IrStatement>.evaluateAll(data: EvalData) =
-        asSequence().map { it.accept(this@FunctionInterpreter, data) }.lastOrNull()
+        asSequence().map { it.accept(this@FunctionInterpreter, data) }.lastOrNull() ?: EvalResult.Unit
 
     private fun cannotEval(element: IrElement): Nothing = throw Signal.CannotEval(element)
 
