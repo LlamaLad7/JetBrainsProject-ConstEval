@@ -85,7 +85,6 @@ private fun evaluateBinary(name: String, left: Any, right: Any): Any? {
     }
     when (name) {
         "equals", BuiltInOperatorNames.EQEQ -> return left == right
-        BuiltInOperatorNames.EQEQEQ -> return left === right
     }
     return null
 }
