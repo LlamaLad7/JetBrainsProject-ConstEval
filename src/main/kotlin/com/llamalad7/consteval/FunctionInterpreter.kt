@@ -52,12 +52,20 @@ class FunctionInterpreter(
     }
 
     override fun visitCall(expression: IrCall, data: EvalData): EvalResult? {
+        val function = expression.symbol.owner
+        if (function.isEvalFunction()) {
+            return evaluate(
+                expression,
+                this,
+                data,
+            ) ?: cannotEval(expression)
+        }
         return evaluateCall(
-            expression.symbol.owner,
+            function,
             expression.receiverAndArgs().map {
                 it.accept(this, data) ?: cannotEval(expression)
             }
-        )
+        ) ?: cannotEval(expression)
     }
 
     override fun visitConst(expression: IrConst<*>, data: EvalData): EvalResult? {
@@ -136,13 +144,22 @@ class FunctionInterpreter(
     private fun cannotEval(element: IrElement): Nothing = throw Signal.CannotEval(element)
 
     companion object {
-        fun evaluate(call: IrCall): EvalResult? {
+        fun evaluate(
+            call: IrCall,
+            argInterpreter: FunctionInterpreter = FunctionInterpreter(null),
+            argContext: EvalData = EvalData(),
+        ): EvalResult? {
             val function = call.symbol.owner
             if (!function.isEvalFunction()) {
                 return null
             }
             val interpreter = FunctionInterpreter(function)
-            val startingData = EvalData.fromArguments(call, interpreter) ?: return null
+            val startingData = EvalData.fromArguments(
+                call,
+                interpreter,
+                argInterpreter,
+                argContext,
+            ) ?: return null
             try {
                 function.body?.accept(interpreter, startingData)
             } catch (ret: Signal.Return) {

@@ -25,14 +25,18 @@ class EvalData(private val parent: EvalData? = null) {
     }
 
     companion object {
-        fun fromArguments(call: IrCall, defaultArgInterpreter: FunctionInterpreter): EvalData? {
+        fun fromArguments(
+            call: IrCall,
+            defaultParamInterpreter: FunctionInterpreter,
+            argInterpreter: FunctionInterpreter,
+            argContext: EvalData,
+        ): EvalData? {
             val function = call.symbol.owner
-            val argInterpreter = FunctionInterpreter(null)
             val paramData = EvalData()
             try {
                 for ((arg, param) in call.arguments.zip(function.valueParameters)) {
-                    val result = arg?.accept(argInterpreter, EvalData())
-                        ?: param.defaultValue?.accept(defaultArgInterpreter, paramData)
+                    val result = arg?.accept(argInterpreter, argContext)
+                        ?: param.defaultValue?.accept(defaultParamInterpreter, paramData)
                         ?: return null
                     paramData.declare(param.symbol, result)
                 }
