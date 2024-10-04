@@ -8,6 +8,7 @@ import org.jetbrains.kotlin.ir.types.IrType
 import org.jetbrains.kotlin.ir.types.isBoolean
 import org.jetbrains.kotlin.ir.types.isInt
 import org.jetbrains.kotlin.ir.types.isString
+import org.jetbrains.kotlin.ir.util.isTopLevel
 
 fun IrType.isConstant() = isInt() || isBoolean() || isString()
 
@@ -15,6 +16,9 @@ fun IrFunction.isEvalFunction() =
     name.asString().startsWith("eval")
             && returnType.isConstant()
             && valueParameters.all { it.type.isConstant() }
+            && extensionReceiverParameter == null
+            && isTopLevel
+            && contextReceiverParametersCount == 0
 
 val IrFunctionAccessExpression.arguments: List<IrExpression?>
     get() = List(valueArgumentsCount) { getValueArgument(it) }
