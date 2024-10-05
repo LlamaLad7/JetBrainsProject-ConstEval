@@ -10,33 +10,43 @@ val kotlinVersion: String by project.properties
 plugins {
     java
     kotlin("jvm") version "2.0.20"
-    kotlin("kapt") version "2.0.20"
 }
 
 repositories {
     mavenCentral()
 }
 
+sourceSets {
+    val testGenerator by creating {
+        compileClasspath += sourceSets.main.get().output
+        runtimeClasspath += sourceSets.main.get().output
+    }
+
+    test {
+        java.setSrcDirs(listOf("src/tests-gen"))
+        compileClasspath += testGenerator.output
+        runtimeClasspath += testGenerator.output
+    }
+}
+
 dependencies {
     implementation(kotlin("reflect"))
     compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable")
 
-    kapt("com.google.auto.service:auto-service:1.1.1")
-    compileOnly("com.google.auto.service:auto-service-annotations:1.1.1")
+    val sharedTestLibs = listOf(
+        "org.jetbrains.kotlin:kotlin-compiler-internal-test-framework",
+        "org.jetbrains.kotlin:kotlin-compiler",
+        platform("org.junit:junit-bom:5.11.0"),
+        "org.junit.jupiter:junit-jupiter",
+    )
+
+    sharedTestLibs.forEach {
+        testImplementation(it)
+        "testGeneratorImplementation"(it)
+    }
 
     testImplementation(kotlin("test-junit"))
-    testImplementation("org.jetbrains.kotlin:kotlin-compiler")
-    testImplementation("org.jetbrains.kotlin:kotlin-compiler-internal-test-framework")
-    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.6.0")
-    testImplementation(platform("org.junit:junit-bom:5.11.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.jetbrains.kotlin:kotlin-annotations-jvm:$kotlinVersion")
-}
-
-sourceSets {
-    test {
-        java.srcDirs(listOf("src/test", "src/test-gen"))
-    }
 }
 
 tasks.withType<KotlinCompile>().configureEach {
@@ -48,13 +58,16 @@ tasks.withType<KotlinCompile>().configureEach {
 
 val generateTests by tasks.creating(JavaExec::class) {
     inputs.dir("src/testData")
-    outputs.dir("src/test-gen")
-    classpath = sourceSets.test.get().runtimeClasspath
+    outputs.dir("src/tests-gen")
+    classpath = sourceSets["testGenerator"].runtimeClasspath
     mainClass.set("com.llamalad7.consteval.test.GenerateTestsKt")
 }
 
-tasks.test {
+tasks.compileTestJava {
     dependsOn(generateTests)
+}
+
+tasks.test {
     inputs.dir("src/testData")
     useJUnitPlatform()
     doFirst {

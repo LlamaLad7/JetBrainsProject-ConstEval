@@ -6,4 +6,4 @@ build/
 out/
 .idea/
 *.iml
-src/test-gen/
+src/tests-gen/
