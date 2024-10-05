@@ -41,6 +41,3 @@ sealed class EvalResult {
         }
     }
 }
-
-inline fun <reified T> EvalResult?.valueAs() =
-    this?.value as? T ?: error("Cannot interpret $this as ${T::class.simpleName}")
