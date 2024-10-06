@@ -1,0 +1,75 @@
+FILE fqName:<root> fileName:/mutuallyRecursive.kt
+  FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
+    BLOCK_BODY
+      VAR name:result type:kotlin.Int [val]
+        CONST Int type=kotlin.Int value=479001600
+      RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+        WHEN type=kotlin.String origin=IF
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'val result: kotlin.Int declared in <root>.box' type=kotlin.Int origin=null
+              arg1: CONST Int type=kotlin.Int value=479001600
+            then: CONST String type=kotlin.String value="OK"
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: STRING_CONCATENATION type=kotlin.String
+              CONST String type=kotlin.String value="Fail: "
+              GET_VAR 'val result: kotlin.Int declared in <root>.box' type=kotlin.Int origin=null
+  FUN name:evalFactorial1 visibility:public modality:FINAL <> (n:kotlin.Int) returnType:kotlin.Int
+    VALUE_PARAMETER name:n index:0 type:kotlin.Int
+    BLOCK_BODY
+      RETURN type=kotlin.Nothing from='public final fun evalFactorial1 (n: kotlin.Int): kotlin.Int declared in <root>'
+        BLOCK type=kotlin.Int origin=WHEN
+          VAR IR_TEMPORARY_VARIABLE name:tmp_0 type:kotlin.Int [val]
+            GET_VAR 'n: kotlin.Int declared in <root>.evalFactorial1' type=kotlin.Int origin=null
+          WHEN type=kotlin.Int origin=WHEN
+            BRANCH
+              if: WHEN type=kotlin.Boolean origin=OROR
+                BRANCH
+                  if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                    arg0: GET_VAR 'val tmp_0: kotlin.Int declared in <root>.evalFactorial1' type=kotlin.Int origin=null
+                    arg1: CONST Int type=kotlin.Int value=0
+                  then: CONST Boolean type=kotlin.Boolean value=true
+                BRANCH
+                  if: CONST Boolean type=kotlin.Boolean value=true
+                  then: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                    arg0: GET_VAR 'val tmp_0: kotlin.Int declared in <root>.evalFactorial1' type=kotlin.Int origin=null
+                    arg1: CONST Int type=kotlin.Int value=1
+              then: CONST Int type=kotlin.Int value=1
+            BRANCH
+              if: CONST Boolean type=kotlin.Boolean value=true
+              then: CALL 'public final fun times (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=MUL
+                $this: CALL 'public final fun evalFactorial2 (n: kotlin.Int): kotlin.Int declared in <root>' type=kotlin.Int origin=null
+                  n: CALL 'public final fun minus (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=MINUS
+                    $this: GET_VAR 'n: kotlin.Int declared in <root>.evalFactorial1' type=kotlin.Int origin=null
+                    other: CONST Int type=kotlin.Int value=1
+                other: GET_VAR 'n: kotlin.Int declared in <root>.evalFactorial1' type=kotlin.Int origin=null
+  FUN name:evalFactorial2 visibility:public modality:FINAL <> (n:kotlin.Int) returnType:kotlin.Int
+    VALUE_PARAMETER name:n index:0 type:kotlin.Int
+    BLOCK_BODY
+      RETURN type=kotlin.Nothing from='public final fun evalFactorial2 (n: kotlin.Int): kotlin.Int declared in <root>'
+        BLOCK type=kotlin.Int origin=WHEN
+          VAR IR_TEMPORARY_VARIABLE name:tmp_1 type:kotlin.Int [val]
+            GET_VAR 'n: kotlin.Int declared in <root>.evalFactorial2' type=kotlin.Int origin=null
+          WHEN type=kotlin.Int origin=WHEN
+            BRANCH
+              if: WHEN type=kotlin.Boolean origin=OROR
+                BRANCH
+                  if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                    arg0: GET_VAR 'val tmp_1: kotlin.Int declared in <root>.evalFactorial2' type=kotlin.Int origin=null
+                    arg1: CONST Int type=kotlin.Int value=0
+                  then: CONST Boolean type=kotlin.Boolean value=true
+                BRANCH
+                  if: CONST Boolean type=kotlin.Boolean value=true
+                  then: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                    arg0: GET_VAR 'val tmp_1: kotlin.Int declared in <root>.evalFactorial2' type=kotlin.Int origin=null
+                    arg1: CONST Int type=kotlin.Int value=1
+              then: CONST Int type=kotlin.Int value=1
+            BRANCH
+              if: CONST Boolean type=kotlin.Boolean value=true
+              then: CALL 'public final fun times (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=MUL
+                $this: CALL 'public final fun evalFactorial1 (n: kotlin.Int): kotlin.Int declared in <root>' type=kotlin.Int origin=null
+                  n: CALL 'public final fun minus (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=MINUS
+                    $this: GET_VAR 'n: kotlin.Int declared in <root>.evalFactorial2' type=kotlin.Int origin=null
+                    other: CONST Int type=kotlin.Int value=1
+                other: GET_VAR 'n: kotlin.Int declared in <root>.evalFactorial2' type=kotlin.Int origin=null

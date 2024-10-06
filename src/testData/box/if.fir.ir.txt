@@ -1,0 +1,109 @@
+FILE fqName:<root> fileName:/if.kt
+  FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
+    BLOCK_BODY
+      VAR name:result type:kotlin.String [val]
+        CONST String type=kotlin.String value="aeh"
+      RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+        WHEN type=kotlin.String origin=IF
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+              arg1: CONST String type=kotlin.String value="aeh"
+            then: CONST String type=kotlin.String value="OK"
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: STRING_CONCATENATION type=kotlin.String
+              CONST String type=kotlin.String value="Fail: "
+              GET_VAR 'val result: kotlin.String declared in <root>.box' type=kotlin.String origin=null
+  FUN name:evalIf visibility:public modality:FINAL <> (a:kotlin.Int, b:kotlin.Boolean, c:kotlin.String, d:kotlin.String) returnType:kotlin.String
+    VALUE_PARAMETER name:a index:0 type:kotlin.Int
+    VALUE_PARAMETER name:b index:1 type:kotlin.Boolean
+    VALUE_PARAMETER name:c index:2 type:kotlin.String
+    VALUE_PARAMETER name:d index:3 type:kotlin.String
+    BLOCK_BODY
+      VAR name:result type:kotlin.String [var]
+        CONST String type=kotlin.String value=""
+      WHEN type=kotlin.Unit origin=IF
+        BRANCH
+          if: WHEN type=kotlin.Boolean origin=OROR
+            BRANCH
+              if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalIf' type=kotlin.Int origin=null
+                arg1: CONST Int type=kotlin.Int value=5
+              then: CONST Boolean type=kotlin.Boolean value=true
+            BRANCH
+              if: CONST Boolean type=kotlin.Boolean value=true
+              then: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+                arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalIf' type=kotlin.Int origin=null
+                arg1: CONST Int type=kotlin.Int value=6
+          then: BLOCK type=kotlin.Unit origin=null
+            SET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.Unit origin=PLUSEQ
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUSEQ
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=PLUSEQ
+                other: CONST String type=kotlin.String value="a"
+        BRANCH
+          if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+            arg0: GET_VAR 'a: kotlin.Int declared in <root>.evalIf' type=kotlin.Int origin=null
+            arg1: CONST Int type=kotlin.Int value=7
+          then: BLOCK type=kotlin.Unit origin=null
+            SET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.Unit origin=PLUSEQ
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUSEQ
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=PLUSEQ
+                other: CONST String type=kotlin.String value="b"
+        BRANCH
+          if: CONST Boolean type=kotlin.Boolean value=true
+          then: BLOCK type=kotlin.Unit origin=null
+            SET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.Unit origin=PLUSEQ
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUSEQ
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=PLUSEQ
+                other: CONST String type=kotlin.String value="c"
+      WHEN type=kotlin.Unit origin=IF
+        BRANCH
+          if: GET_VAR 'b: kotlin.Boolean declared in <root>.evalIf' type=kotlin.Boolean origin=null
+          then: BLOCK type=kotlin.Unit origin=null
+            SET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.Unit origin=PLUSEQ
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUSEQ
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=PLUSEQ
+                other: CONST String type=kotlin.String value="d"
+        BRANCH
+          if: CONST Boolean type=kotlin.Boolean value=true
+          then: BLOCK type=kotlin.Unit origin=null
+            SET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.Unit origin=PLUSEQ
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUSEQ
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=PLUSEQ
+                other: CONST String type=kotlin.String value="e"
+      WHEN type=kotlin.Unit origin=IF
+        BRANCH
+          if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+            arg0: GET_VAR 'c: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=null
+            arg1: CONST String type=kotlin.String value="hello"
+          then: BLOCK type=kotlin.Unit origin=null
+            SET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.Unit origin=PLUSEQ
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUSEQ
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=PLUSEQ
+                other: CONST String type=kotlin.String value="f"
+        BRANCH
+          if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+            arg0: GET_VAR 'c: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=null
+            arg1: CONST String type=kotlin.String value="world"
+          then: BLOCK type=kotlin.Unit origin=null
+            SET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.Unit origin=PLUSEQ
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUSEQ
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=PLUSEQ
+                other: CONST String type=kotlin.String value="g"
+      RETURN type=kotlin.Nothing from='public final fun evalIf (a: kotlin.Int, b: kotlin.Boolean, c: kotlin.String, d: kotlin.String): kotlin.String declared in <root>'
+        WHEN type=kotlin.String origin=IF
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'd: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=null
+              arg1: CONST String type=kotlin.String value="hi"
+            then: BLOCK type=kotlin.String origin=null
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUS
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=null
+                other: CONST String type=kotlin.String value="h"
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.String origin=null
+              CALL 'public final fun plus (other: kotlin.Any?): kotlin.String declared in kotlin.String' type=kotlin.String origin=PLUS
+                $this: GET_VAR 'var result: kotlin.String declared in <root>.evalIf' type=kotlin.String origin=null
+                other: CONST String type=kotlin.String value="i"
