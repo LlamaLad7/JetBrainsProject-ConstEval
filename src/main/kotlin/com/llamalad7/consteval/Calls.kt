@@ -48,7 +48,7 @@ private fun evaluateBinary(name: String, left: Any, right: Any): Any? {
                 "plus" -> return left.plus(right)
                 "minus" -> return left.minus(right)
                 "times" -> return left.times(right)
-                "div" -> return left.div(right)
+                "div" -> return if (right == 0) null else left.div(right)
                 "rem" -> return left.rem(right)
                 "shl" -> return left.shl(right)
                 "shr" -> return left.shr(right)

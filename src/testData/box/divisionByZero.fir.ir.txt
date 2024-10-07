@@ -1,0 +1,24 @@
+FILE fqName:<root> fileName:/divisionByZero.kt
+  FUN name:box visibility:public modality:FINAL <> () returnType:kotlin.String
+    BLOCK_BODY
+      TRY type=kotlin.Nothing
+        try: BLOCK type=kotlin.Nothing origin=null
+          TYPE_OP type=kotlin.Unit origin=IMPLICIT_COERCION_TO_UNIT typeOperand=kotlin.Unit
+            CALL 'public final fun evalDiv (a: kotlin.Int, b: kotlin.Int): kotlin.Int declared in <root>' type=kotlin.Int origin=null
+              a: CONST Int type=kotlin.Int value=5
+              b: CONST Int type=kotlin.Int value=0
+          RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+            CONST String type=kotlin.String value="Fail: Didn't throw"
+        CATCH parameter=val <unused var>: java.lang.ArithmeticException declared in <root>.box
+          VAR CATCH_PARAMETER name:<unused var> type:java.lang.ArithmeticException [val]
+          BLOCK type=kotlin.Nothing origin=null
+            RETURN type=kotlin.Nothing from='public final fun box (): kotlin.String declared in <root>'
+              CONST String type=kotlin.String value="OK"
+  FUN name:evalDiv visibility:public modality:FINAL <> (a:kotlin.Int, b:kotlin.Int) returnType:kotlin.Int
+    VALUE_PARAMETER name:a index:0 type:kotlin.Int
+    VALUE_PARAMETER name:b index:1 type:kotlin.Int
+    BLOCK_BODY
+      RETURN type=kotlin.Nothing from='public final fun evalDiv (a: kotlin.Int, b: kotlin.Int): kotlin.Int declared in <root>'
+        CALL 'public final fun div (other: kotlin.Int): kotlin.Int declared in kotlin.Int' type=kotlin.Int origin=DIV
+          $this: GET_VAR 'a: kotlin.Int declared in <root>.evalDiv' type=kotlin.Int origin=null
+          other: GET_VAR 'b: kotlin.Int declared in <root>.evalDiv' type=kotlin.Int origin=null
